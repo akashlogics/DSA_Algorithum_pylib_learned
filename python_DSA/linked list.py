@@ -1,15 +1,3 @@
-class linked_list:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
-    def __init__(self,data=None):
-        self.head=None
-    def insert(self,data):
-        data=data.linked_list
-        if self.head is not None:
-            data.next=self.head
-            head=self.head
-list1=linked_list
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -183,6 +171,3 @@ list3.insert_at_end(3)
 list3.head.next.next.next = list3.head  # Creating a loop
 list3.detect_and_remove_loop()
 print(list3.display())  # Output: [1, 2, 3]
-
-
-
