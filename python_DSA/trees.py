@@ -1,34 +1,132 @@
 class TreeNode:
-    def __init__(self, value):
-        self.value = value
-        self.children = []
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
 
-    def add_child(self, child_node):
-        self.children.append(child_node)
+class BST:
+    def __init__(self):
+        self.root = None
 
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
+        else:
+            self._insert_helper(self.root, data)
 
-# Example usage of a binary tree
+    def _insert_helper(self, current, data):
+        if data < current.data:
+            if current.left is None:
+                current.left = TreeNode(data)
+            else:
+                self._insert_helper(current.left, data)
+        elif data > current.data:
+            if current.right is None:
+                current.right = TreeNode(data)
+            else:
+                self._insert_helper(current.right, data)
+        else:
+            print('Value already in tree')
 
-# Create nodes
-root = TreeNode(1)
-child1 = TreeNode(2)
-child2 = TreeNode(3)
-child3 = TreeNode(4)
-child4 = TreeNode(5)
+    def printtree(self):
+        print("Inorder")#LPR
+        self.inorder(self.root)
+        print("Preorder")
 
-# Add children to the root node
-root.add_child(child1)
-root.add_child(child2)
+    def _print_helper(self, node):
+        if node:
+            self._print_helper(node.right)
+            print(node.data)
+            self._print_helper(node.left)
 
-# Add children to child1
-child1.add_child(child3)
-child1.add_child(child4)
+            #print("Preorder")#PLR
+            #print(node.data)
+            #self._print_helper(node.left)
+            #self._print_helper(node.right)
+#
+            #print("Postorder")#LRP
+            #self._print_helper(node.left)
+            #self._print_helper(node.right)
+            #print(node.data)
 
-# Traverse the tree (Depth-First Search)
-def traverse_tree(node):
-    print(node.value)
-    for child in node.children:
-        traverse_tree(child)
+# Create an instance of BST and insert some values
+t = BST()
+t.insert(50)
+t.insert(30)
+t.insert(20)
+t.insert(40)
+t.insert(70)
+t.insert(60)
+t.insert(80)
 
-# Traverse the binary tree
-traverse_tree(root)
+# Print the tree
+t.printtree()
+
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
+        else:
+            self._insert_helper(self.root, data)
+
+    def _insert_helper(self, current, data):
+        if data < current.data:
+            if current.left is None:
+                current.left = TreeNode(data)
+            else:
+                self._insert_helper(current.left, data)
+        elif data > current.data:
+            if current.right is None:
+                current.right = TreeNode(data)
+            else:
+                self._insert_helper(current.right, data)
+        else:
+            print('Value already in tree')
+
+    def printtree(self):
+        print("Inorder")
+        self.inorder(self.root)
+        print("Preorder")
+        self.preorder(self.root)
+        print("Postorder")
+        self.postorder(self.root)
+
+    def inorder(self, node):
+        if node:
+            self.inorder(node.left)
+            print(node.data)
+            self.inorder(node.right)
+
+    def preorder(self, node):
+        if node:
+            print(node.data)
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def postorder(self, node):
+        if node:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.data)
+
+# Create an instance of BST and insert some values
+t = BST()
+t.insert(50)
+t.insert(30)
+t.insert(20)
+t.insert(40)
+t.insert(70)
+t.insert(60)
+t.insert(80)
+
+# Print the tree
+t.printtree()
